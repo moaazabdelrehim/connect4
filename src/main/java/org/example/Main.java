@@ -8,6 +8,8 @@ public class Main {
         // IntelliJ IDEA suggests fixing it.
         System.out.printf("Hello and welcome!\n");
         System.out.printf("Niklas is also here");
+        System.out.printf("Anna slow. but also here");
+
 
         // Press Umschalt+F10 or click the green arrow button in the gutter to run the code.
         for (int i = 1; i <= 5; i++) {
