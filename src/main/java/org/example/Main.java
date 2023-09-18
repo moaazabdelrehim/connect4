@@ -9,6 +9,7 @@ public class Main {
         System.out.printf("Hello and welcome!\n");
         System.out.printf("Niklas is also here");
         System.out.printf("Anna slow. but also here");
+        System.out.printf("Tim here 4 real");
 
 
         // Press Umschalt+F10 or click the green arrow button in the gutter to run the code.
