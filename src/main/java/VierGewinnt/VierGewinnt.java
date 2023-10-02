@@ -60,24 +60,10 @@ public class VierGewinnt {
               p2Color == p1Color);
         System.out.print("player 2 color: " + p2Color + "\n");
 
+        // moved to class Board
+        Board board1 = new Board();
 
-        // initialize game board variables rows/columns for adjusting game board
-        int columns = 7;
-        int rows = 6;
-        char[][] board = new char[rows][columns];
+        board1.temp();
 
-        for (int row = 0; row < rows; row++) {
-            for (int column = 0; column < columns; column++) {
-                board[row][column] = ' ';
-            }
-        }
-
-        // output game board
-        for (int row = 0; row < rows; row++) {
-            for (int column = 0; column < columns; column++) {
-                System.out.print(board[row][column] + "|");
-            }
-            System.out.println();
-        }
     }
 }
