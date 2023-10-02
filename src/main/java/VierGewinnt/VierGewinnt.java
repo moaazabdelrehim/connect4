@@ -6,6 +6,8 @@ import java.util.Scanner;
 public class VierGewinnt {
     public static void main(String[] args) {
 
+        System.out.print("Spielbeschreibung: tbd \nSpielanleitung: tbd \n");
+
         // user input - color selection
         Scanner scanner = new Scanner(System.in);
         char p1Color;
