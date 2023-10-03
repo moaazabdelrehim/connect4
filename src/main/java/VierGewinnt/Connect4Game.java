@@ -1,8 +1,5 @@
 package VierGewinnt;
 
-// needed for player assignment
-import java.util.Scanner;
-
 public class Connect4Game {
 
     public static void main(String[] args) {
@@ -10,7 +7,7 @@ public class Connect4Game {
         GameLogic gameLogic = new GameLogic();
 
         // Game Explaination
-        gameLogic.gameExplaination();
+        gameLogic.gameExplanation();
 
         // Choose player colors
         Board board = new Board();

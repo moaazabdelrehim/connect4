@@ -3,8 +3,8 @@ package VierGewinnt;
 import java.util.Scanner;
 
 public class GameLogic {
-    public void gameExplaination(){
-        //instructions how to play the game
+    public void gameExplanation(){
+        //Instructions how to play the game
         System.out.print("Spielbeschreibung: tbd \nSpielanleitung: tbd \n");
     }
 

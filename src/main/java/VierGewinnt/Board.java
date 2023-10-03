@@ -3,7 +3,7 @@ package VierGewinnt;
 import java.util.Scanner;
 
 public class Board {
-    // initialize game board variables rows/columns for adjusting game board
+    // Initialize game board variables rows/columns for adjusting game board
     int columns = 7;
     int rows = 6;
     char p1Color;
@@ -55,7 +55,7 @@ public class Board {
             }
         }
 
-        // output game board
+        // Output game board
         for (int row = 0; row < rows; row++) {
             for (int column = 0; column < columns; column++) {
                 System.out.print(board[row][column] + "|");
