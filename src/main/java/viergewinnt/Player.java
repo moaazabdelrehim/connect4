@@ -1,4 +1,4 @@
-package VierGewinnt;
+package viergewinnt;
 
 public class Player {
 }

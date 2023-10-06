@@ -1,4 +1,4 @@
-package VierGewinnt;
+package viergewinnt;
 
 import java.util.Scanner;
 
