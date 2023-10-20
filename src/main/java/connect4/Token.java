@@ -2,7 +2,7 @@ package connect4;
 
 public class Token {
 
-    public String value = "   ";
+    public String value = "X";
 
     public Token() {
     }
