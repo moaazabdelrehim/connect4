@@ -1,12 +1,23 @@
 package connect4;
 
-public class Token {
+public enum Token {
+    VALUE_X("X"),
+    VALUE_O("O"),
+    VALUE_EMPTY(" ");
 
-    public String value = "X";
+    private final String value;
 
-    public Token() {
-    }
-    public Token(String value) {
+    Token(final String value) {
         this.value = value;
     }
+
+    @Override
+    public String toString() {
+        return value;
+    }
+
+    public String getValue() {
+        return value;
+    }
 }
+

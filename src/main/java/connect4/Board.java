@@ -14,20 +14,28 @@ public class Board {
         }
     }
 
+    public Boolean placeToken(Token token, Integer column) {
+
+    cells[5][column].token = token;
+
+    return true;
+    }
+
     public String displayBoard() {
 
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("\nCurrent Board: \n\n");
-        stringBuilder.append("|  1  |  2  |  3  |  4  |  5  |  6  |  7  |\n");
+        stringBuilder.append("|  0  |  1  |  2  |  3  |  4  |  5  |  6  |\n");
 
         for (int row = 0; row < rows; row++) {
             stringBuilder.append("|-----------------------------------------|\n");
             for (int column = 0; column <columns; column++) {
-                stringBuilder.append("|  " + cells[row][column].token.value + "  ");
+                stringBuilder.append("|  " + cells[row][column].token.getValue() + "  ");
             }
             stringBuilder.append("|\n");
         }
         stringBuilder.append("|-----------------------------------------|\n");
+
         return stringBuilder.toString();
     }
 
