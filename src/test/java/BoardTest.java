@@ -19,6 +19,7 @@ class BoardTest {
     @org.junit.jupiter.api.Test
     void displayBoardEmptyTest() {
 
+        // Auslagern in ein Textfile
         String expectedBoard = "\n" +
                 "Current Board: \n" +
                 "\n" +
