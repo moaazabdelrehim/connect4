@@ -1,7 +1,6 @@
 package connect4.ui;
 
 import connect4.Connect4Game;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -9,10 +8,15 @@ import java.io.InputStreamReader;
 
 public class UserInterface 
 {
-
 	public static final String MESSAGE_COLUMN_FULL = "\nDie angegebene Spalte ist leider bereits voll. Bitte versuche es erneut: ";
 	public static final String MESSAGE_PLAYER_INPUT = "Bitte gebe eine Spalte ein: ";
-	public static final String MESSAGE_WRONG_INPUT = "Please enter a number between 0-6:";
+	public static final String MESSAGE_WRONG_INPUT = "Bitte gebe eine Zahl zwischen 0-6 ein:";
+	public static final String MESSAGE_GAME_EXPLANATION = "so gehts (anna)";
+	public static final String MESSAGE_TOKEN_PLACED = "Token successfully placed";
+	public static final String MESSAGE_GAME_TITLE = "Willkommen zu VierGewinnt! Wählen sie aus.";
+	public static final String MESSAGE_CHOOSE_GAME_START = "Spiel starten";
+	public static final String MESSAGE_CHOOSE_GAME_EXPLANATION = "Spielanleitung";
+	public static final String MESSAGE_GAME_FINISHED = "Spiel beendet!";
 
 	public static final int lowerInputLimit = 0;
 	public static final int higherInputLimit = 6;
@@ -28,13 +32,12 @@ public class UserInterface
 			Output.displayMessage(MESSAGE_COLUMN_FULL);
 			column = (int)readColumn(lowerInputLimit,higherInputLimit);
 		}
-		Output.displayMessage("Token successfully placed");
+		Output.displayMessage(MESSAGE_TOKEN_PLACED);
 		Output.displayMessage(ctrl.getCurrentBoard());
 
 	}
-
 	public void showExplaination(){
-		Output.displayMessage("so gehts (anna)");
+		Output.displayMessage(MESSAGE_GAME_EXPLANATION);
 
 	}
 
@@ -43,7 +46,7 @@ public class UserInterface
 
 	public void getDataFromCtrl3() {
 	}
-	
+
 	public void getDataForCustomInput() {
 	}
 
@@ -55,14 +58,14 @@ public class UserInterface
 	public void start() {
 		Menu<Runnable> menu = new Menu<>("User Interface");
 
-		menu.setTitel("Willkommen zu VierGewinnt! Wählen sie aus.");
-		menu.insert("S", "Spiel Starten", this::run);
-		menu.insert("A", "Anleitung", this::showExplaination);
+		menu.setTitel(MESSAGE_GAME_TITLE);
+		menu.insert("S", MESSAGE_CHOOSE_GAME_START, this::run);
+		menu.insert("A", MESSAGE_CHOOSE_GAME_EXPLANATION, this::showExplaination);
 		Runnable choice;
 		while ((choice = menu.exec()) != null) {
 			 choice.run();
 		}
-		System.out.println("Program finished");
+		System.out.println(MESSAGE_GAME_FINISHED);
 	}
 
 	public void run() {
@@ -91,7 +94,7 @@ public class UserInterface
 				number = Double.parseDouble(str);
 			}catch(NumberFormatException e) {
 				number=null;
-				System.out.println("Please enter a valid number:");
+				System.out.println(MESSAGE_WRONG_INPUT);
 				continue;
 			}
 			if(number<lowerlimit) {

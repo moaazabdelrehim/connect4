@@ -2,9 +2,9 @@ package connect4;
 
 public class Connect4Game {
 
-    private Board board;
-    private Player player1;
-    private Player player2;
+    private final Board board;
+    private final Player player1;
+    private final Player player2;
 
     private Player currentPlayer;
 
@@ -14,14 +14,6 @@ public class Connect4Game {
         board = new Board();
         player1 = new Player("Berni", Token.VALUE_X);
         player2 = new Player("Niklas", Token.VALUE_O);
-        currentPlayer = player1;
-        gameActive = true;
-    }
-
-    public Connect4Game(String name1, String name2){
-        board = new Board();
-        player1 = new Player(name1, Token.VALUE_X);
-        player2 = new Player(name2, Token.VALUE_O);
         currentPlayer = player1;
         gameActive = true;
     }
