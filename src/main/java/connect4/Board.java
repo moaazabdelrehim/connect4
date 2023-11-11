@@ -20,7 +20,7 @@ public class Board {
      * @param column the column in which the token needs to be placed
      * @return returns true for successful placement and false if the column is already full
      */
-    public Boolean placeToken(Token token, Integer column) {
+    public Boolean placeToken(Token token, int column) {
 
         for (int row = 5; row >= 0; row--) {
             if (cells[row][column].token.equals(Token.VALUE_EMPTY)) {
@@ -31,7 +31,7 @@ public class Board {
         return false;
     }
 
-    public String displayBoard() {
+    public String generateBoard() {
 
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("\nCurrent Board: \n\n");
