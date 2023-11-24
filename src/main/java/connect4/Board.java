@@ -22,6 +22,10 @@ public class Board {
         }
     }
 
+    public Cell[][] getCells() {
+        return cells;
+    }
+
     /**
      * Adds a token in the given column
      * @param token the token of the current player

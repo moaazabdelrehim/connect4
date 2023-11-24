@@ -1,4 +1,6 @@
 import connect4.Board;
+import connect4.Token;
+import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -16,14 +18,52 @@ class BoardTest {
     void tearDown() {
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
+    void placeToken_CorrectPlacementTokenXTest() {
+
+        Token testTokenX = Token.VALUE_X;
+
+        // Insert X at Column 0 and row 5
+        assertEquals(testBoard.getCells()[5][0].token,Token.VALUE_EMPTY);
+        assertTrue(testBoard.placeToken(testTokenX, 0));
+        assertEquals(Token.VALUE_X, testBoard.getCells()[5][0].token);
+    }
+
+    @Test
+    void placeToken_CorrectPlacementTokenOTest() {
+
+        Token testTokenO = Token.VALUE_O;
+
+        // Insert Y at Column 0 and row 4
+        assertEquals(testBoard.getCells()[5][0].token,Token.VALUE_EMPTY);
+        assertTrue(testBoard.placeToken(testTokenO, 0));
+        assertEquals(Token.VALUE_O, testBoard.getCells()[5][0].token);
+    }
+
+    @Test
+    void placeToken_FullColumnTest() {
+
+        Token testTokenO = Token.VALUE_O;
+
+        assertTrue(testBoard.placeToken(testTokenO, 0));
+        assertTrue(testBoard.placeToken(testTokenO, 0));
+        assertTrue(testBoard.placeToken(testTokenO, 0));
+        assertTrue(testBoard.placeToken(testTokenO, 0));
+        assertTrue(testBoard.placeToken(testTokenO, 0));
+        assertTrue(testBoard.placeToken(testTokenO, 0));
+
+        assertFalse(testBoard.placeToken(testTokenO, 0));
+    }
+
+
+    @Test
     void displayBoardEmptyTest() {
 
         // Auslagern in ein Textfile
         String expectedBoard = "\n" +
-                "Current Board: \n" +
+                "Derzeitiger Spielstand: \n" +
                 "\n" +
-                "|  1  |  2  |  3  |  4  |  5  |  6  |  7  |\n" +
+                "|  0  |  1  |  2  |  3  |  4  |  5  |  6  |\n" +
                 "|-----------------------------------------|\n" +
                 "|     |     |     |     |     |     |     |\n" +
                 "|-----------------------------------------|\n" +
