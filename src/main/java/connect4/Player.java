@@ -3,6 +3,7 @@ package connect4;
 import java.util.Scanner;
 
 public class Player {
+    public static final String WRONG_INPUT_ERROR_MESSAGE = "\nDeine Eingabe muss eine Nummer zwischen 0-6 sein. Bitte versuche es erneut: ";
     final String name;
     Token token = Token.VALUE_EMPTY;
 
@@ -31,14 +32,14 @@ public class Player {
 
             // check if input is number
             while (!scan.hasNextInt()) {
-                System.out.print("\nDeine Eingabe muss eine Nummer zwischen 0-6 sein. Bitte versuche es erneut: ");
+                System.out.print(WRONG_INPUT_ERROR_MESSAGE);
                 scan.nextLine();
             }
 
             // check if input matches columns
             currentColumn = scan.nextInt();
             if (currentColumn < 0 || currentColumn > 6) {
-                System.out.print("\nDeine Eingabe muss eine Nummer zwischen 0-6 sein. Bitte versuche es erneut: ");
+                System.out.print(WRONG_INPUT_ERROR_MESSAGE);
                 scan = new Scanner(System.in);
             } else {
                 newInputNeeded = false;

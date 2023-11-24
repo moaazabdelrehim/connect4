@@ -39,29 +39,6 @@ public class Connect4Game {
         currentPlayer = (currentPlayer.equals(player1)) ? player2 : player1;
     }
 
-    /*public void run(){
-        Player currentPlayer = player1;
-        Boolean gameActive = true;
-
-        // Main Game Loop
-        while (gameActive) {
-
-            //UI
-            Output.displayMessage("\n" + currentPlayer.name + ", bitte gib die nächste Spalte ein, in die du deinen Token platzieren willst: ");
-            int playerMove = currentPlayer.getNextMoveColumn();
-            while (!testBoard.placeToken(currentPlayer.token, playerMove)) {
-                Output.displayMessage("\nDie angegebene Spalte ist leider bereits voll. Bitte versuche es erneut: ");
-                playerMove = currentPlayer.getNextMoveColumn();
-            }
-            System.out.println(testBoard.displayBoard());
-            currentPlayer = (currentPlayer.equals(player1)) ? player2 : player1;
-        }
-
-    }
-*/
-
-
-
-    }
+}
 
 

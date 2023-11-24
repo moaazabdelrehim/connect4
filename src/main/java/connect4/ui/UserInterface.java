@@ -20,6 +20,9 @@ public class UserInterface
 
 	public static final int lowerInputLimit = 0;
 	public static final int higherInputLimit = 6;
+	public static final String USER_INTERFACE_TITLE = "User Interface";
+	public static final String USER_INTERFACE_OPTION_2 = "A";
+	public static final String USER_INTERFACE_OPTION_1 = "S";
 
 	private Connect4Game ctrl = new Connect4Game();
 
@@ -56,16 +59,17 @@ public class UserInterface
 
 
 	public void start() {
-		Menu<Runnable> menu = new Menu<>("User Interface");
+		Menu<Runnable> menu = new Menu<>(USER_INTERFACE_TITLE);
 
 		menu.setTitel(MESSAGE_GAME_TITLE);
-		menu.insert("S", MESSAGE_CHOOSE_GAME_START, this::run);
-		menu.insert("A", MESSAGE_CHOOSE_GAME_EXPLANATION, this::showExplaination);
+		menu.insert(USER_INTERFACE_OPTION_1, MESSAGE_CHOOSE_GAME_START, this::run);
+		menu.insert(USER_INTERFACE_OPTION_2, MESSAGE_CHOOSE_GAME_EXPLANATION, this::showExplaination);
 		Runnable choice;
 		while ((choice = menu.exec()) != null) {
 			 choice.run();
 		}
 		System.out.println(MESSAGE_GAME_FINISHED);
+
 	}
 
 	public void run() {
@@ -85,7 +89,7 @@ public class UserInterface
 		return value.trim();
 	}
 
-	protected double readColumn(int lowerlimit, int upperlimit)
+	protected double readColumn(int lowerLimit, int upperLimit)
 	{
 		Double number = null;
 		while(number == null) {
@@ -97,10 +101,10 @@ public class UserInterface
 				System.out.println(MESSAGE_WRONG_INPUT);
 				continue;
 			}
-			if(number<lowerlimit) {
+			if(number<lowerLimit) {
 				System.out.println(MESSAGE_WRONG_INPUT);
 				number=null;
-			}else if(number>upperlimit) {
+			}else if(number>upperLimit) {
 				System.out.println(MESSAGE_WRONG_INPUT);
 				number=null;
 			}
