@@ -10,7 +10,7 @@ public class Connect4Game {
 
     private boolean gameActive = false;
 
-    public Connect4Game(){
+    public Connect4Game() {
         board = new Board();
         player1 = new Player("Berni", Token.VALUE_X);
         player2 = new Player("Niklas", Token.VALUE_O);
@@ -18,18 +18,20 @@ public class Connect4Game {
         gameActive = true;
     }
 
+    public Player getCurrentPlayer() {
+        return currentPlayer;
+    }
+
     public boolean isGameActive() {
         return gameActive;
     }
 
- public boolean placeToken(int column){
-     if (board.placeToken(currentPlayer.token, column)) {
-         // check win
-         changePlayer();
-         return true;
-     }
-     return false;
- }
+    public boolean placeToken(int column) {
+        if (board.placeToken(currentPlayer.token, column)) {
+            return true;
+        }
+        return false;
+    }
 
     public String getCurrentBoard() {
         return board.generateBoard();
@@ -39,6 +41,11 @@ public class Connect4Game {
         currentPlayer = (currentPlayer.equals(player1)) ? player2 : player1;
     }
 
+    public Boolean checkWin() {
+
+      return board.checkforWin();
+
+    }
 }
 
 

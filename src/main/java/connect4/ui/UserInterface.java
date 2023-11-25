@@ -37,11 +37,16 @@ public class UserInterface
 		}
 		Output.displayMessage(MESSAGE_TOKEN_PLACED);
 		Output.displayMessage(ctrl.getCurrentBoard());
+		if (ctrl.checkWin()){
+			System.out.println(ctrl.getCurrentPlayer().getName() + " HAT GEWONNNEN!");
+			System. exit(0);
+		} else {
+			ctrl.changePlayer();
+		}
 
 	}
-	public void showExplaination(){
+	public void showExplanation(){
 		Output.displayMessage(MESSAGE_GAME_EXPLANATION);
-
 	}
 
 	public void getDataFromCtrl2() {
@@ -63,7 +68,7 @@ public class UserInterface
 
 		menu.setTitel(MESSAGE_GAME_TITLE);
 		menu.insert(USER_INTERFACE_OPTION_1, MESSAGE_CHOOSE_GAME_START, this::run);
-		menu.insert(USER_INTERFACE_OPTION_2, MESSAGE_CHOOSE_GAME_EXPLANATION, this::showExplaination);
+		menu.insert(USER_INTERFACE_OPTION_2, MESSAGE_CHOOSE_GAME_EXPLANATION, this::showExplanation);
 		Runnable choice;
 		while ((choice = menu.exec()) != null) {
 			 choice.run();
