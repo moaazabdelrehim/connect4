@@ -17,6 +17,8 @@ public class Board {
     public static final int MIN_COLUMN = 0;
     public static final int MAX_COLUMN = 6;
 
+    public static final int MIN_ROW = 0;
+    public static final int MAX_ROW = 5;
 
     private int lastTokenColumn = 0;
     private int lastTokenRow = 0;
@@ -37,7 +39,8 @@ public class Board {
 
     /**
      * Adds a token in the given column
-     * @param token the token of the current player
+     *
+     * @param token  the token of the current player
      * @param column the column in which the token needs to be placed
      * @return returns true for successful placement and false if the column is already full
      */
@@ -46,7 +49,7 @@ public class Board {
         for (int row = TOP_ROW; row >= BOTTOM_ROW; row--) {
             if (cells[row][column].token.equals(Token.VALUE_EMPTY)) {
                 cells[row][column].token = token;
-                lastTokenColumn= column;
+                lastTokenColumn = column;
                 lastTokenRow = row;
                 return true;
             }
@@ -72,53 +75,82 @@ public class Board {
         return stringBuilder.toString();
     }
 
-    public Boolean checkforWin() {
+    public Boolean checkForWin() {
+        Token currentToken = cells[lastTokenRow][lastTokenColumn].token;
+        return checkForWinHorizontally(currentToken) || checkForWinVertically(currentToken) || checkForWinDiagonallyUp(currentToken) || checkForWinDiagonallyDown(currentToken);
+    }
 
-    Token currentToken = cells[lastTokenRow][lastTokenColumn].token;
-    return checkForWinHorizontally(currentToken);
+    private Boolean checkForWinVertically(Token currentToken) {
 
+        int matchVertically = 1;// it starts at one because the initially placed token also adds to the count
+
+        for (int counter = 1; counter <= 3; counter++) {
+            if (lastTokenRow + counter <= MAX_ROW) {
+                if (cells[lastTokenRow + counter][lastTokenColumn].token.equals(currentToken)) {
+                    matchVertically++;
+                }
+            }
+            if (lastTokenRow - counter >= MIN_ROW)
+                if (cells[lastTokenRow - counter][lastTokenColumn].token.equals(currentToken)) {
+                    matchVertically++;
+                }
+        }
+        return matchVertically == MATCH_WIN_VALUE;
     }
 
     private Boolean checkForWinHorizontally(Token currentToken) {
 
-       int matchCountHorizontally = 1;// it starts at one because the initially placed token also adds to the count
-       matchCountHorizontally = checkForWinHorizontallyRightSide(currentToken, matchCountHorizontally);
-       matchCountHorizontally = checkForWinHorizontallyLeftSide(currentToken, matchCountHorizontally);
+        int matchCountHorizontally = 1;// it starts at one because the initially placed token also adds to the count
 
-       if (matchCountHorizontally == MATCH_WIN_VALUE) {
-           return true;
-       }
-       return false;
+        for (int counter = 1; counter <= 3; counter++) {
+            if (lastTokenColumn + counter <= MAX_COLUMN) {
+                if (cells[lastTokenRow][lastTokenColumn + counter].token.equals(currentToken)) {
+                    matchCountHorizontally++;
+                }
+            }
+            if (lastTokenColumn - counter >= MIN_COLUMN)
+                if (cells[lastTokenRow][lastTokenColumn - counter].token.equals(currentToken)) {
+                    matchCountHorizontally++;
+                }
+        }
+        return matchCountHorizontally == MATCH_WIN_VALUE;
     }
 
-    private int checkForWinHorizontallyRightSide(Token currentToken, int matchCountHorizontally) {
+    private Boolean checkForWinDiagonallyDown(Token currentToken) {
 
-        for(int i = 1; i<=3; i++) {
-            int currentColumn = lastTokenColumn+i;
-            if (currentColumn > MAX_COLUMN) {
-                return matchCountHorizontally;
+        int matchDiagonallyDown = 1;// it starts at one because the initially placed token also adds to the count
+
+        for (int counter = 1; counter <= 3; counter++) {
+            if (lastTokenRow + counter <= MAX_ROW && lastTokenColumn + counter < MAX_COLUMN) {
+                if (cells[lastTokenRow + counter][lastTokenColumn + counter].token.equals(currentToken)) {
+                    matchDiagonallyDown++;
+                }
             }
-            if(!cells[lastTokenRow][currentColumn].token.equals(currentToken)) {
-                return matchCountHorizontally;
+            if (lastTokenRow - counter >= MIN_ROW && lastTokenColumn - counter > MIN_COLUMN) {
+                if (cells[lastTokenRow - counter][lastTokenColumn - counter].token.equals(currentToken)) {
+                    matchDiagonallyDown++;
+                }
             }
-            matchCountHorizontally++;
         }
-        return matchCountHorizontally;
+        return matchDiagonallyDown == MATCH_WIN_VALUE;
     }
 
-    private int checkForWinHorizontallyLeftSide(Token currentToken, int matchCountHorizontally) {
+    private Boolean checkForWinDiagonallyUp(Token currentToken) {
 
-        for(int i = 1; i<=3; i++) {
-            int currentColumn = lastTokenColumn-i;
-            if (currentColumn < MIN_COLUMN) {
-                return matchCountHorizontally;
-            }
+        int matchDiagonallyUp = 1;// it starts at one because the initially placed token also adds to the count
 
-            if(!cells[lastTokenRow][currentColumn].token.equals(currentToken)) {
-                return matchCountHorizontally;
+        for (int counter = 1; counter <= 3; counter++) {
+            if (lastTokenRow + counter <= MAX_ROW && lastTokenColumn - counter > MIN_COLUMN) {
+                if (cells[lastTokenRow + counter][lastTokenColumn - counter].token.equals(currentToken)) {
+                    matchDiagonallyUp++;
+                }
             }
-            matchCountHorizontally++;
+            if (lastTokenRow - counter >= MIN_ROW && lastTokenColumn + counter < MAX_COLUMN) {
+                if (cells[lastTokenRow - counter][lastTokenColumn + counter].token.equals(currentToken)) {
+                    matchDiagonallyUp++;
+                }
+            }
         }
-        return matchCountHorizontally;
+        return matchDiagonallyUp == MATCH_WIN_VALUE;
     }
 }

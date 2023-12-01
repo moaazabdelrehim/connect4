@@ -43,7 +43,7 @@ public class Connect4Game {
 
     public Boolean checkWin() {
 
-      return board.checkforWin();
+      return board.checkForWin();
 
     }
 }
