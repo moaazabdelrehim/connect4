@@ -98,6 +98,7 @@ public class Board {
         return matchVertically == MATCH_WIN_VALUE;
     }
 
+    //Todo: edge case - token in the middle
     private Boolean checkForWinHorizontally(Token currentToken) {
 
         int matchCountHorizontally = 1;// it starts at one because the initially placed token also adds to the count

@@ -27,10 +27,7 @@ public class Connect4Game {
     }
 
     public boolean placeToken(int column) {
-        if (board.placeToken(currentPlayer.token, column)) {
-            return true;
-        }
-        return false;
+       return board.placeToken(currentPlayer.token, column);
     }
 
     public String getCurrentBoard() {

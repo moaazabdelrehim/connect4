@@ -1,4 +1,3 @@
-import connect4.Connect4Game;
 import connect4.ui.UserInterface;
 
 public class MCP {
