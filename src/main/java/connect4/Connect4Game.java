@@ -39,10 +39,12 @@ public class Connect4Game {
     }
 
     public Boolean checkWin() {
-
       return board.checkForWin();
-
     }
+    public Boolean checkDraw() {
+        return board.checkForDraw();
+    }
+
 }
 
 

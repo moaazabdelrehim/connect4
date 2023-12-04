@@ -34,7 +34,7 @@ class BoardTest {
 
         Token testTokenO = Token.VALUE_O;
 
-        // Insert Y at Column 0 and row 4
+        // Insert Y at Column 0 and row 5
         assertEquals(testBoard.getCells()[5][0].token,Token.VALUE_EMPTY);
         assertTrue(testBoard.placeToken(testTokenO, 0));
         assertEquals(Token.VALUE_O, testBoard.getCells()[5][0].token);

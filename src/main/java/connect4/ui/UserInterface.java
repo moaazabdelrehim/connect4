@@ -23,6 +23,8 @@ public class UserInterface
 	public static final String USER_INTERFACE_TITLE = "User Interface";
 	public static final String USER_INTERFACE_OPTION_2 = "A";
 	public static final String USER_INTERFACE_OPTION_1 = "S";
+	public static final String WIN_MESSAGE = "HAT GEWONNNEN!";
+	public static final String DRAW_MESSAGE = "Unentschieden!";
 
 	private Connect4Game ctrl = new Connect4Game();
 
@@ -38,7 +40,10 @@ public class UserInterface
 		Output.displayMessage(MESSAGE_TOKEN_PLACED);
 		Output.displayMessage(ctrl.getCurrentBoard());
 		if (ctrl.checkWin()){
-			System.out.println(ctrl.getCurrentPlayer().getName() + " HAT GEWONNNEN!");
+			System.out.println(ctrl.getCurrentPlayer().getName() + " " + WIN_MESSAGE);
+			System. exit(0);
+		} else if (ctrl.checkDraw()) {
+			System.out.println(DRAW_MESSAGE);
 			System. exit(0);
 		} else {
 			ctrl.changePlayer();

@@ -19,7 +19,8 @@ public class Board {
 
     public static final int MIN_ROW = 0;
     public static final int MAX_ROW = 5;
-
+    public static final int BOARD_MAX_VALUE = 42;
+    public int currentBoardValue = 0;
     private int lastTokenColumn = 0;
     private int lastTokenRow = 0;
 
@@ -37,13 +38,6 @@ public class Board {
         return cells;
     }
 
-    /**
-     * Adds a token in the given column
-     *
-     * @param token  the token of the current player
-     * @param column the column in which the token needs to be placed
-     * @return returns true for successful placement and false if the column is already full
-     */
     public Boolean placeToken(Token token, int column) {
 
         for (int row = TOP_ROW; row >= BOTTOM_ROW; row--) {
@@ -51,6 +45,7 @@ public class Board {
                 cells[row][column].token = token;
                 lastTokenColumn = column;
                 lastTokenRow = row;
+                currentBoardValue++;
                 return true;
             }
         }
@@ -78,6 +73,10 @@ public class Board {
     public Boolean checkForWin() {
         Token currentToken = cells[lastTokenRow][lastTokenColumn].token;
         return checkForWinHorizontally(currentToken) || checkForWinVertically(currentToken) || checkForWinDiagonallyUp(currentToken) || checkForWinDiagonallyDown(currentToken);
+    }
+
+    public Boolean checkForDraw(){
+        return currentBoardValue == BOARD_MAX_VALUE;
     }
 
     private Boolean checkForWinVertically(Token currentToken) {
