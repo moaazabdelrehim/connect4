@@ -3,8 +3,8 @@ package connect4;
 public class Connect4Game {
 
     private final Board board;
-    private Player player1;
-    private Player player2;
+    private final Player player1;
+    private final Player player2;
 
     private Player currentPlayer;
 
@@ -12,8 +12,8 @@ public class Connect4Game {
 
     public Connect4Game() {
         board = new Board();
-        player1 = new Player("Berni", Token.VALUE_X);
-        player2 = new Player("Niklas", Token.VALUE_O);
+        player1 = new Player("Player 1", Token.VALUE_X);
+        player2 = new Player("Player 2", Token.VALUE_O);
         currentPlayer = player1;
         gameActive = true;
     }
@@ -25,6 +25,7 @@ public class Connect4Game {
     public void setNameForPlayer1(String name) {
         player1.name = name;
     }
+
     public void setNameForPlayer2(String name) {
         player2.name = name;
     }
@@ -34,7 +35,7 @@ public class Connect4Game {
     }
 
     public boolean placeToken(int column) {
-       return board.placeToken(currentPlayer.token, column);
+        return board.placeToken(currentPlayer.token, column);
     }
 
     public String getCurrentBoard() {
@@ -46,8 +47,9 @@ public class Connect4Game {
     }
 
     public Boolean checkWin() {
-      return board.checkForWin();
+        return board.checkForWin();
     }
+
     public Boolean checkDraw() {
         return board.checkForDraw();
     }

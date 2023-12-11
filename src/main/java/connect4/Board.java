@@ -13,14 +13,12 @@ public class Board {
     Cell[][] cells;
     public static final int TOTAL_ROWS = 6;
     public static final int TOTAL_COLUMNS = 7;
-
     public static final int MIN_COLUMN = 0;
     public static final int MAX_COLUMN = 6;
-
     public static final int MIN_ROW = 0;
     public static final int MAX_ROW = 5;
     public static final int BOARD_MAX_VALUE = 42;
-    public int currentBoardValue = 0;
+    private int currentBoardValue = 0;
     private int lastTokenColumn = 0;
     private int lastTokenRow = 0;
 
@@ -75,7 +73,7 @@ public class Board {
         return checkForWinHorizontally(currentToken) || checkForWinVertically(currentToken) || checkForWinDiagonallyUp(currentToken) || checkForWinDiagonallyDown(currentToken);
     }
 
-    public Boolean checkForDraw(){
+    public Boolean checkForDraw() {
         return currentBoardValue == BOARD_MAX_VALUE;
     }
 
@@ -93,12 +91,13 @@ public class Board {
                     upMatchesEndReached = true;
                 }
             }
-            if (lastTokenRow - counter >= MIN_ROW && !downMatchesEndReached)
+            if (lastTokenRow - counter >= MIN_ROW && !downMatchesEndReached) {
                 if (cells[lastTokenRow - counter][lastTokenColumn].token.equals(currentToken)) {
                     matchVertically++;
                 } else {
                     downMatchesEndReached = true;
                 }
+            }
         }
         return matchVertically >= MATCH_WIN_VALUE;
     }
@@ -117,12 +116,13 @@ public class Board {
                     rightMatchesEndReached = true;
                 }
             }
-            if (lastTokenColumn - counter >= MIN_COLUMN && !leftMatchesEndReached)
+            if (lastTokenColumn - counter >= MIN_COLUMN && !leftMatchesEndReached) {
                 if (cells[lastTokenRow][lastTokenColumn - counter].token.equals(currentToken)) {
                     matchCountHorizontally++;
                 } else {
                     leftMatchesEndReached = true;
                 }
+            }
         }
         return matchCountHorizontally >= MATCH_WIN_VALUE;
     }
@@ -162,7 +162,7 @@ public class Board {
             if (lastTokenRow + counter <= MAX_ROW && lastTokenColumn - counter >= MIN_COLUMN && !rightUpMatchesEndReached) {
                 if (cells[lastTokenRow + counter][lastTokenColumn - counter].token.equals(currentToken)) {
                     matchDiagonallyUp++;
-                } else {
+                }else {
                     rightUpMatchesEndReached = true;
                 }
             }

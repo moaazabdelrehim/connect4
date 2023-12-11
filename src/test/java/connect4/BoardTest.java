@@ -1,5 +1,9 @@
+package connect4;
+
 import connect4.Board;
 import connect4.Token;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -8,14 +12,12 @@ class BoardTest {
 
     Board testBoard;
 
-    @org.junit.jupiter.api.BeforeEach
+    @BeforeEach
     void setUp() {
-
         testBoard = new Board();
-
     }
 
-    @org.junit.jupiter.api.AfterEach
+    @AfterEach
     void tearDown() {
     }
 
@@ -45,7 +47,6 @@ class BoardTest {
     void placeToken_FullColumnTest() {
 
         Token testTokenO = Token.VALUE_O;
-
         assertTrue(testBoard.placeToken(testTokenO, 0));
         assertTrue(testBoard.placeToken(testTokenO, 0));
         assertTrue(testBoard.placeToken(testTokenO, 0));
@@ -218,7 +219,7 @@ class BoardTest {
     }
 
     @Test
-    void checkForWin_XWins() {
+    void checkForWin_PlayerX_Wins() {
         Token testTokenO = Token.VALUE_O;
         Token testTokenX = Token.VALUE_X;
         testBoard.placeToken(testTokenX, 1);
@@ -254,12 +255,12 @@ class BoardTest {
         testBoard.placeToken(testTokenX, 2);
         testBoard.placeToken(testTokenX, 2);
 
-        System.out.println("checkForWin_XWins: " + testBoard.generateBoard());
+        System.out.println("checkForWin_PlayerX_Wins: " + testBoard.generateBoard());
         assertTrue(testBoard.checkForWin());
     }
 
     @Test
-    void checkForWin_OWins() {
+    void checkForWin_PlayerO_Wins() {
         Token testTokenO = Token.VALUE_O;
         Token testTokenX = Token.VALUE_X;
         testBoard.placeToken(testTokenX, 1);
@@ -295,7 +296,7 @@ class BoardTest {
         testBoard.placeToken(testTokenX, 2);
         testBoard.placeToken(testTokenO, 5);
 
-        System.out.println("checkForWin_OWins: " + testBoard.generateBoard());
+        System.out.println("checkForWin_PlayerO_Wins: " + testBoard.generateBoard());
         assertTrue(testBoard.checkForWin());
     }
 

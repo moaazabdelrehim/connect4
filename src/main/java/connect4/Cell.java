@@ -8,5 +8,4 @@ public class Cell {
         token = Token.VALUE_EMPTY;
     }
 
-
 }
