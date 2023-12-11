@@ -3,8 +3,8 @@ package connect4;
 public class Connect4Game {
 
     private final Board board;
-    private final Player player1;
-    private final Player player2;
+    private Player player1;
+    private Player player2;
 
     private Player currentPlayer;
 
@@ -20,6 +20,13 @@ public class Connect4Game {
 
     public Player getCurrentPlayer() {
         return currentPlayer;
+    }
+
+    public void setNameForPlayer1(String name) {
+        player1.name = name;
+    }
+    public void setNameForPlayer2(String name) {
+        player2.name = name;
     }
 
     public boolean isGameActive() {

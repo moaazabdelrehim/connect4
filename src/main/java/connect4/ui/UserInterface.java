@@ -10,21 +10,30 @@ public class UserInterface
 {
 	public static final String MESSAGE_COLUMN_FULL = "\nDie angegebene Spalte ist leider bereits voll. Bitte versuche es erneut: ";
 	public static final String MESSAGE_PLAYER_INPUT = "Bitte gebe eine Spalte ein: ";
-	public static final String MESSAGE_WRONG_INPUT = "Bitte gebe eine Zahl zwischen 0-6 ein:";
-	public static final String MESSAGE_GAME_EXPLANATION = "so gehts (anna)";
-	public static final String MESSAGE_TOKEN_PLACED = "Token successfully placed";
+	public static final String MESSAGE_WRONG_INPUT = "Bitte gebe eine Zahl zwischen 1-7 ein:";
+	public static final String MESSAGE_GAME_EXPLAINATION = "Herzlich Willkommen zu einer Runde Vier Gewinnt." +
+			"\nDie Spielregeln sind denkbar einfach: Zwei Spieler setzen abwechselnd ihre Spielsteine in eine" +
+			" der sieben Spalten, der Spielstein rutscht dann nach unten durch.\nZiel ist es, als" +
+			" Erster vier eigene Spielsteine in horizontaler, vertikaler oder diagonaler" +
+			"Reihe zu platzieren.\n\n" +
+			"Um den Stein zu platzieren, gebe eine Zahl zwischen 1 und 7 auf der" +
+			" Tastatur ein.";
+	public static final String MESSAGE_TOKEN_PLACED = "Token erfolgreich platziert.";
 	public static final String MESSAGE_GAME_TITLE = "Willkommen zu VierGewinnt! Wählen sie aus.";
 	public static final String MESSAGE_CHOOSE_GAME_START = "Spiel starten";
 	public static final String MESSAGE_CHOOSE_GAME_EXPLANATION = "Spielanleitung";
 	public static final String MESSAGE_GAME_FINISHED = "Spiel beendet!";
 
-	public static final int lowerInputLimit = 0;
-	public static final int higherInputLimit = 6;
+	public static final int lowerInputLimit = 1;
+	public static final int higherInputLimit = 7;
 	public static final String USER_INTERFACE_TITLE = "User Interface";
 	public static final String USER_INTERFACE_OPTION_2 = "A";
 	public static final String USER_INTERFACE_OPTION_1 = "S";
 	public static final String WIN_MESSAGE = "HAT GEWONNNEN!";
 	public static final String DRAW_MESSAGE = "Unentschieden!";
+	public static final int OFFSET_FOR_DISPLAY_COLUMN_NUMBERS = 1;
+	public static final String PLAYER_ONE_NAME_QUESTION = "Bitte gebe den Namen von Player 1 (X) ein: ";
+	public static final String PLAYER_TWO_NAME_QUESTION = "Bitte gebe den Namen von Player 2 (O) ein: ";
 
 	private Connect4Game ctrl = new Connect4Game();
 
@@ -37,7 +46,6 @@ public class UserInterface
 			Output.displayMessage(MESSAGE_COLUMN_FULL);
 			column = (int)readColumn(lowerInputLimit,higherInputLimit);
 		}
-		Output.displayMessage(MESSAGE_TOKEN_PLACED);
 		Output.displayMessage(ctrl.getCurrentBoard());
 		if (ctrl.checkWin()){
 			System.out.println(ctrl.getCurrentPlayer().getName() + " " + WIN_MESSAGE);
@@ -51,7 +59,7 @@ public class UserInterface
 
 	}
 	public void showExplanation(){
-		Output.displayMessage(MESSAGE_GAME_EXPLANATION);
+		Output.displayMessage(MESSAGE_GAME_EXPLAINATION);
 	}
 
 	public void getDataFromCtrl2() {
@@ -83,6 +91,13 @@ public class UserInterface
 	}
 
 	public void run() {
+
+		System.out.print(PLAYER_ONE_NAME_QUESTION);
+		ctrl.setNameForPlayer1(readLine());
+		System.out.print(PLAYER_TWO_NAME_QUESTION);
+		ctrl.setNameForPlayer2(readLine());
+
+		System.out.println("\n"+ ctrl.getCurrentBoard());
 			while (ctrl.isGameActive()) {
 				placeToken();
 			}
@@ -119,6 +134,6 @@ public class UserInterface
 				number=null;
 			}
 		}
-		return number;
+		return number - OFFSET_FOR_DISPLAY_COLUMN_NUMBERS;
 	}
 }

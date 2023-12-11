@@ -2,7 +2,7 @@ package connect4;
 
 public class Board {
     public static final String MESSAGE_CURRENT_GAME_STATUS = "\nDerzeitiger Spielstand: \n\n";
-    public static final String BOARD_HEADER = "|  0  |  1  |  2  |  3  |  4  |  5  |  6  |\n";
+    public static final String BOARD_HEADER = "|  1  |  2  |  3  |  4  |  5  |  6  |  7  |\n";
     public static final String BOARD_DIVIDER = "|-----------------------------------------|\n";
     public static final String BOARD_LEFT_DELIMITER = "|  ";
     public static final String BOARD_RIGHT_SPACER = "  ";
