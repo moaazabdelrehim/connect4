@@ -76,16 +76,21 @@ public class UserInterface {
     }
 
     public void run() {
-
-        System.out.print(PLAYER_ONE_NAME_QUESTION);
-        ctrl.setNameForPlayer1(readLine());
-        System.out.print(PLAYER_TWO_NAME_QUESTION);
-        ctrl.setNameForPlayer2(readLine());
-
+        ctrl.setNameForPlayer1(getName(PLAYER_ONE_NAME_QUESTION));
+        ctrl.setNameForPlayer2(getName(PLAYER_TWO_NAME_QUESTION));
         System.out.println("\n" + ctrl.getCurrentBoard());
         while (ctrl.isGameActive()) {
             placeToken();
         }
+    }
+
+    protected String getName(String question) {
+        String name = null;
+        while (name == null || name.equals("")) {
+            System.out.print(question);
+            name = this.readLine();
+        }
+        return name;
     }
 
     protected String readLine() {
